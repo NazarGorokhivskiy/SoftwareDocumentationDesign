@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>My web app</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet'
+    type='text/css'>
+  <link rel="stylesheet" href="/css/styles.css" type="text/css" media="screen" charset="utf-8">
+
+  <!-- Date picker -->
+  <link rel="stylesheet" type="text/css"
+    href="https://cdn.jsdelivr.net/npm/pikaday/css/pikaday.css">
+  <script src="https://momentjs.com/downloads/moment.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/pikaday/pikaday.js"></script>
+</head>
+
+<body>
+  <div class="container">
+    <p>
+      <label for="new-task">Add new Insurace agent</label>
+      <div class="add-task">
+        <div class="add-task__input">
+          <label class="add-task__label">First name: </label>
+          <input id="first_name" name="first_name" type="text">
+        </div>
+        <div class="add-task__input">
+          <label class="add-task__label">Last name: </label>
+          <input id="last_name" name="last_name" type="text">
+        </div>
+        <div class="add-task__input">
+          <label class="add-task__label">Position: </label>
+          <input id="position" name="position" type="text">
+        </div>
+        <div class="add-task__input">
+          <label class="add-task__label">Start date: </label>
+          <input id="start_date" name="start_date" type="text">
+        </div>
+        <div class="add-task__input">
+          <label class="add-task__label">Email: </label>
+          <input id="email" name="email" type="text">
+        </div>
+      </div>
+      <button id="add-button">Add</button>
+    </p>
+
+    <h3>Insuranse agents</h3>
+    <ul id="agents-list">
+    </ul>
+  </div>
+
+  <script type="text/javascript" src="/js/api.js"></script>
+  <script type="text/javascript" src="/js/index.js"></script>
+</body>
+
+</html>

@@ -8,3 +8,4 @@ export const sequelize = new Sequelize(DB.DB_NAME, DB.USERNAME, DB.PASSWORD, {
     timestamps: false,
   },
 });
+
