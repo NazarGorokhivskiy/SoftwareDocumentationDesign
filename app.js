@@ -6,6 +6,7 @@ import path, { dirname } from "path";
 import { fileURLToPath } from "url";
 
 import routes from "./routes/index.js";
+import loadKafkaProducer from "./kafka/loadProducer.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const app = express();
@@ -18,8 +19,8 @@ app.use(cors());
 // Main routes
 app.use("/api/", routes);
 
-app.use(express.static('views'));
-
+// Serve website files
+app.use(express.static("views"));
 app.get("/", function (req, res) {
   res.sendFile(path.join(__dirname, "views/index.html"));
 });
@@ -28,3 +29,6 @@ app.get("/", function (req, res) {
 app.listen(PORT, () => {
   console.log(`Server is available on http://localhost:${PORT}`);
 });
+
+// Create Kafka producer and connect to kafka server
+loadKafkaProducer();
