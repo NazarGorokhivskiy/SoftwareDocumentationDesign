@@ -1,5 +1,3 @@
-import fs from "fs";
-import path from "path";
 import { readLinesFromFile } from "../utils.js";
 
 export default class FileService {
