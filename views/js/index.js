@@ -85,12 +85,7 @@ const onItemEditClick = (id) => {
   switchEditAddMode(true, id);
 };
 
-const onItemDeleteClick = (id) => {
-  Api.deleteAgent(id);
-
-  renderAllItems();
-};
-
+// CRUD actions
 const onAddItemClick = () => {
   const item = {
     first_name: first_nameInput.value,
@@ -125,5 +120,12 @@ const onSubmitEditClicked = (id) => {
   switchEditAddMode(false);
 };
 
+const onItemDeleteClick = (id) => {
+  Api.deleteAgent(id);
+
+  renderAllItems();
+};
+
+// Main function
 addButton.addEventListener("click", onAddItemClick);
 renderAllItems();

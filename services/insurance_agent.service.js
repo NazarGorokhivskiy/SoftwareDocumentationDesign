@@ -1,6 +1,7 @@
 import typedi from "typedi";
 import AgentModel from "../models/insurance_agent.js";
 import { generateRandId } from "../utils.js";
+import FileService from "./file.service.js";
 
 export default class AgentService {
   static fromCSVtoEntity(csvAgent) {

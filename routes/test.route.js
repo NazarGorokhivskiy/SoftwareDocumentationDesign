@@ -13,7 +13,8 @@ router.get("/", async (req, res, next) => {
     const fileContent = await FileService.getAgents(0, 20);
 
     // Initializing file printing strategy
-    const strategy = new KafkaStrategy();
+    const strategy = new ConsoleStrategy();
+    
     const printService = new PrintService(strategy);
 
     // Printing the file

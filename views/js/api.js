@@ -31,7 +31,7 @@ class Api {
 
   static async editAgent(id, agent) {
     try {
-      const response = await fetch(`${ENDPOINT}${id}`, {
+      const response = await fetch(`${ENDPOINT}/${id}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json;charset=utf-8",
@@ -48,7 +48,7 @@ class Api {
   }
 
   static async deleteAgent(id) {
-    const response = await fetch(`${ENDPOINT}${id}`, {
+    const response = await fetch(`${ENDPOINT}/${id}`, {
       method: "DELETE",
     });
 
