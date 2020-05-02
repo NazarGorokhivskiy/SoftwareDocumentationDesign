@@ -1,5 +1,7 @@
 import fs from "fs";
 import readline from "readline";
+import ConsoleStrategy from "./services/print_strategies/ConsoleStrategy.js";
+import EventHubsStrategy from "./services/print_strategies/EventHubsStrategy.js";
 
 export const generateRandId = () => {
   return Math.floor(Math.random() * 10e6);
@@ -37,3 +39,20 @@ export const readLinesFromFile = (startLine, endLine) =>
       reject(error);
     }
   });
+
+export const extractFilenameFromUrl = (string) => {
+  return string.substr(string.lastIndexOf("/") + 1);
+};
+
+export const getPrintStrategy = () => {
+  const evnStrategy = process.env.PRINT_STRATEGY;
+
+  switch (evnStrategy) {
+    case "CONSOLE":
+      return new ConsoleStrategy();
+    case "EVENT_HUBS":
+      return new EventHubsStrategy();
+    default:
+      return null;
+  }
+};

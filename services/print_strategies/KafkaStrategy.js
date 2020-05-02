@@ -8,7 +8,7 @@ const sendCallback = (err, data) => {
   }
 };
 
-export default class KafkaStrategy {
+class KafkaStrategy {
   static kafkaProducer = null;
 
   print(arr) {
@@ -24,3 +24,5 @@ export default class KafkaStrategy {
     KafkaStrategy.kafkaProducer.send(payloads, sendCallback);
   }
 }
+
+export default KafkaStrategy;

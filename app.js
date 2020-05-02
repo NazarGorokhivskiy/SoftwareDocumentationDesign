@@ -31,4 +31,4 @@ app.listen(PORT, () => {
 });
 
 // Create Kafka producer and connect to kafka server
-loadKafkaProducer();
+// loadKafkaProducer();

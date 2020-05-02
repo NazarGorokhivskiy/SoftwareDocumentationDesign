@@ -1,4 +1,4 @@
-export default class PrintService {
+class PrintService {
   constructor(printStrategy) {
     this.printStrategy = printStrategy;
   }
@@ -12,6 +12,12 @@ export default class PrintService {
       throw new Error("printStrategy in not defined!");
     }
 
-    this.printStrategy.print(fileContent);
+    if (!(fileContent instanceof Array)) {
+      throw new Error("Can not use EventHubsStrategy: data should be an array");
+    }
+
+    return this.printStrategy.print(fileContent);
   }
 }
+
+export default PrintService;

@@ -1,6 +1,8 @@
-export default class ConsoleStrategy {
+import EventHubsClient from "../../config/event_hubs.js";
+
+class EventHubsStrategy {
   print(data) {
-    console.log("Printing to console...");
+    console.log("Sending the data to Azure Event Hubs ...");
 
     const printedLines = [];
     const hundredsCount = Math.ceil(data.length / 100);
@@ -11,21 +13,23 @@ export default class ConsoleStrategy {
       const maxLine = data.length > i * 100 ? i * 100 : data.length;
       const minLine = maxLine > 100 ? maxLine - 100 : 0;
 
-      console.log(`Lines from ${minLine} to ${maxLine}`);
+      console.log(`Sending lines from ${minLine} to ${maxLine}...`);
 
       const formattedData = data
         .slice(minLine, maxLine)
         .map((city) => Object.values(city).join(","));
 
-      console.log(formattedData);
+      EventHubsClient.send(formattedData);
 
-      printedLines.push(`Line ${minLine} - ${maxLine} was printed to console`);
+      printedLines.push(`Line ${minLine} - ${maxLine} was sent to Azure Event Hubs`);
 
       i++;
     }
 
-    console.log("Printing finished successfully!");
+    console.log("The data was sent successfully!");
 
     return printedLines;
   }
 }
+
+export default EventHubsStrategy;

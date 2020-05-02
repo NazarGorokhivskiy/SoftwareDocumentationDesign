@@ -12,16 +12,20 @@
   "scripts": {
     "start": "node -r dotenv/config app.js",
     "dev": "nodemon -r dotenv/config app.js",
-    "kafka-run-consumer": "node ./kafka/consumer.js",
-    "kafka-run-producer": "node ./kafka/producer.js"
+    "run-kafka-consumer": "node ./kafka/consumer.js",
+    "run-kafka-producer": "node ./kafka/producer.js",
+    "hubs": "node -r dotenv/config config/event_hubs.js"
   },
   "dependencies": {
+    "@azure/event-hubs": "^2.1.4",
+    "axios": "^0.19.2",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.16.3",
     "kafka-node": "^5.0.0",
     "morgan": "^1.9.1",
+    "redis": "^3.0.2",
     "sequelize": "^5.21.1",
     "tedious": "^8.2.0",
     "typedi": "^0.8.0"
