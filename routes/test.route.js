@@ -1,22 +1,26 @@
 import express from "express";
-import AgentService from "../services/insurance_agent.service.js";
+
+import PrintService from "../services/print.service.js";
 import FileService from "../services/file.service.js";
+import ConsoleStrategy from "../services/print_strategies/ConsoleStrategy.js";
+import KafkaStrategy from "../services/print_strategies/KafkaStrategy.js";
 
 const router = express.Router();
 
 router.get("/", async (req, res, next) => {
   try {
-    const fileContent = await FileService.getAgents(0, 12);
+    // Reading the file content
+    const fileContent = await FileService.getAgents(0, 20);
 
-    const agentService = new AgentService();
+    // Initializing file printing strategy
+    const strategy = new ConsoleStrategy();
+    
+    const printService = new PrintService(strategy);
 
-    fileContent.forEach((line) => {
-      const entity = AgentService.fromCSVtoEntity(line);
+    // Printing the file
+    printService.print(fileContent);
 
-      agentService.create(entity);
-    });
-
-    return res.send(200);
+    return res.sendStatus(200);
   } catch (e) {
     next(e);
   }
