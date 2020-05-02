@@ -1,6 +1,8 @@
 # Node.js application following the Multi-layered Architecture Pattern
 
 ### Was made for university subject "Software Documentation Design"
+Inspired by [Bulletproof node.js project architecture](https://dev.to/santypk4/bulletproof-node-js-project-architecture-4epf).
+
 ---
 ## Requirements
 
