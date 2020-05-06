@@ -12,18 +12,16 @@
   "scripts": {
     "start": "node -r dotenv/config app.js",
     "dev": "nodemon -r dotenv/config app.js",
-    "run-kafka-consumer": "node ./kafka/consumer.js",
-    "run-kafka-producer": "node ./kafka/producer.js",
+    "pubsub": "node -r dotenv/config ./config/pubsub.js",
     "generateFile": "node scripts/generateFile.js"
   },
   "dependencies": {
-    "@azure/event-hubs": "^2.1.4",
+    "@google-cloud/pubsub": "^1.7.3",
     "axios": "^0.19.2",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.16.3",
-    "kafka-node": "^5.0.0",
     "morgan": "^1.9.1",
     "redis": "^3.0.2",
     "sequelize": "^5.21.1",

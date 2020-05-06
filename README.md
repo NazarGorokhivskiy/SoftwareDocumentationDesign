@@ -36,7 +36,7 @@ If the installation was successful, you should be able to run the following comm
 
 ## Install
 
-    $ https://github.com/NazarGorokhivskiy/SoftwareDocumentationDesign.git
+    $ git clone https://github.com/NazarGorokhivskiy/SoftwareDocumentationDesign.git
     $ cd SoftwareDocumentationDesign
     $ npm i
     $ npm i -g dotenv
@@ -60,7 +60,13 @@ REDIS_PASS=
 # Azure Event Hubs
 EVENT_HUBS_URL=
 
-# POSSIBLE VALUES: CONSOLE | EVENT_HUBS
+# Google Cloud Platform
+GOOGLE_APPLICATION_CREDENTIALS=
+GCP_PROJECT_ID=
+GCP_PUB_SUB_TOPIC=
+PUBSUB_VERIFICATION_TOKEN=
+
+# POSSIBLE VALUES: CONSOLE | PUB_SUB
 PRINT_STRATEGY="CONSOLE"
 ```
 
