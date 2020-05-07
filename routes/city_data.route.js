@@ -21,9 +21,9 @@ router.get("/upload", async (req, res, next) => {
     const fileResponse = await Axios.get(
       "https://data.cityofnewyork.us/resource/ipu4-2q9a.json"
     );
-
-    const uploadDate = new Date().toISOString();
+    
     const filename = extractFilenameFromUrl(fileResponse.request.path);
+    const uploadDate = new Date().toISOString();
 
     const currentStatus = await redisHget(filename, "status");
 
@@ -48,6 +48,23 @@ router.get("/upload", async (req, res, next) => {
 
     // Saving print info to Redis
     printedLines.forEach((line) => redisLpush(`${filename}:info`, line));
+
+    return res.sendStatus(200);
+  } catch (error) {
+    next(error);
+  }
+});
+
+router.get("/upload_no_redis", async (req, res, next) => {
+  try {
+    const fileResponse = await Axios.get(
+      "https://data.cityofnewyork.us/resource/ipu4-2q9a.json"
+    );
+    
+    // Printing file content
+    const printStrategy = getPrintStrategy();
+    const printService = new PrintService(printStrategy);
+    await printService.print(fileResponse.data);
 
     return res.sendStatus(200);
   } catch (error) {

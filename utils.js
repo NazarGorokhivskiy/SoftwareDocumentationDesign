@@ -1,7 +1,7 @@
 import fs from "fs";
 import readline from "readline";
 import ConsoleStrategy from "./services/print_strategies/ConsoleStrategy.js";
-import PubSubStrategy from "./services/print_strategies/PubSubStrategy.js";
+import SQSStrategy from "./services/print_strategies/SQSStrategy.js";
 
 export const generateRandId = () => {
   return Math.floor(Math.random() * 10e6);
@@ -50,8 +50,8 @@ export const getPrintStrategy = () => {
   switch (evnStrategy) {
     case "CONSOLE":
       return new ConsoleStrategy();
-    case "PUB_SUB":
-      return new PubSubStrategy();
+    case "MESSAGING_SERVICE":
+      return new SQSStrategy();
     default:
       return null;
   }

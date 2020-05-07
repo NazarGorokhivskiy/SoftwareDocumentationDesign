@@ -6,7 +6,6 @@ import path, { dirname } from "path";
 import { fileURLToPath } from "url";
 
 import routes from "./routes/index.js";
-import loadKafkaProducer from "./kafka/loadProducer.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const app = express();
@@ -30,5 +29,3 @@ app.listen(PORT, () => {
   console.log(`Server is available on http://localhost:${PORT}`);
 });
 
-// Create Kafka producer and connect to kafka server
-// loadKafkaProducer();
