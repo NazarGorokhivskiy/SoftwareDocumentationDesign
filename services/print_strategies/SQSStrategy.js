@@ -1,4 +1,5 @@
 import sendTodSQS from "../../config/aws.js";
+import { generateRandNumber } from "../../utils.js";
 
 export default class SQSStrategy {
   print(data) {
@@ -17,7 +18,10 @@ export default class SQSStrategy {
 
       const formattedData = data.slice(minLine, maxLine);
 
-      sendTodSQS(formattedData[2]);
+      formattedData.forEach(message => {
+        message.total_boozers = generateRandNumber();
+        sendTodSQS(message);
+      });
 
       printedLines.push(`Line ${minLine} - ${maxLine} was sent to Amazon SQS`);
 

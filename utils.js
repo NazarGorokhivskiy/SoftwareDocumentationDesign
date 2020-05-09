@@ -7,6 +7,10 @@ export const generateRandId = () => {
   return Math.floor(Math.random() * 10e6);
 };
 
+export const generateRandNumber = () => {
+  return Math.floor(Math.random() * 100);
+};
+
 export const readLinesFromFile = (startLine, endLine) =>
   new Promise((resolve, reject) => {
     try {

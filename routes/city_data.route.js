@@ -8,6 +8,8 @@ import { extractFilenameFromUrl, getPrintStrategy } from "../utils.js";
 
 const router = express.Router();
 
+const FILE_URL = "https://data.cityofnewyork.us/resource/ipu4-2q9a.json";
+
 const LAST_MESSAGE = "LAST_MESSAGE";
 const STATUS_COMPLETED = "completed";
 
@@ -18,10 +20,8 @@ const redisSet = promisify(RedisClient.set).bind(RedisClient);
 
 router.get("/upload", async (req, res, next) => {
   try {
-    const fileResponse = await Axios.get(
-      "https://data.cityofnewyork.us/resource/ipu4-2q9a.json"
-    );
-    
+    const fileResponse = await Axios.get(FILE_URL);
+
     const filename = extractFilenameFromUrl(fileResponse.request.path);
     const uploadDate = new Date().toISOString();
 
@@ -57,10 +57,8 @@ router.get("/upload", async (req, res, next) => {
 
 router.get("/upload_no_redis", async (req, res, next) => {
   try {
-    const fileResponse = await Axios.get(
-      "https://data.cityofnewyork.us/resource/ipu4-2q9a.json"
-    );
-    
+    const fileResponse = await Axios.get(FILE_URL);
+
     // Printing file content
     const printStrategy = getPrintStrategy();
     const printService = new PrintService(printStrategy);
