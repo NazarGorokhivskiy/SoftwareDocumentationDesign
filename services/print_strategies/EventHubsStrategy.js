@@ -1,9 +1,9 @@
-import sendToSQS from "../../config/aws.js";
+import EventHubsClient from "../../config/event_hubs.js";
 import { generateRandNumber } from "../../utils.js";
 
 export default class SQSStrategy {
   print(data) {
-    console.log("Printing to Amazon SQS ...");
+    console.log("Printing to Event Hubs ...");
 
     const printedLines = [];
     const hundredsCount = Math.ceil(data.length / 100);
@@ -18,12 +18,13 @@ export default class SQSStrategy {
 
       const formattedData = data.slice(minLine, maxLine);
 
-      formattedData.forEach(message => {
+      formattedData.forEach((message) => {
         message.total_boozers = generateRandNumber();
-        sendToSQS(message);
+
+        EventHubsClient.send(message);
       });
 
-      printedLines.push(`Line ${minLine} - ${maxLine} was sent to Amazon SQS`);
+      printedLines.push(`Line ${minLine} - ${maxLine} was sent to Event Hubs`);
 
       i++;
 

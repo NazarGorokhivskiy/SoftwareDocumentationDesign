@@ -55,9 +55,9 @@ router.get("/upload", async (req, res, next) => {
   }
 });
 
-router.get("/upload_no_redis", async (req, res, next) => {
+router.post("/upload_no_redis", async (req, res, next) => {
   try {
-    const fileResponse = await Axios.get(FILE_URL);
+    const fileResponse = await Axios.get(req.body.city_url);
 
     // Printing file content
     const printStrategy = getPrintStrategy();
