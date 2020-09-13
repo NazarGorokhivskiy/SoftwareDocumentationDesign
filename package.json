@@ -12,7 +12,7 @@
   "scripts": {
     "start": "node -r dotenv/config app.js",
     "dev": "nodemon -r dotenv/config app.js",
-    "pubsub": "node -r dotenv/config ./config/pubsub.js",
+    "test-file": "node -r dotenv/config test.js",
     "generateFile": "node scripts/generateFile.js"
   },
   "dependencies": {

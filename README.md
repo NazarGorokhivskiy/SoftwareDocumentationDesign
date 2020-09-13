@@ -57,9 +57,8 @@ REDIS_HOST=
 REDIS_PORT=
 REDIS_PASS=
 
-# EVENT HUBS "Connection string–primary key"
+# EVENT HUBS "Connection string–primary key" for Event Hubs Instance
 EVENT_HUBS_URL=
-EVENT_HUB_NAME=
 
 # AWS SQS
 AWS_SQS_URL=

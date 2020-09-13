@@ -20,8 +20,7 @@ export default class SQSStrategy {
 
       formattedData.forEach((message) => {
         message.total_boozers = generateRandNumber();
-
-        EventHubsClient.send(message);
+        EventHubsClient.send({ body: message });
       });
 
       printedLines.push(`Line ${minLine} - ${maxLine} was sent to Event Hubs`);
